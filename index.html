@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>邮箱MX记录检测工具</title>
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <meta name="description" content="免费的邮箱MX记录检测工具，支持批量查询，使用DNS over HTTPS技术">
+    <meta name="keywords" content="MX记录,邮箱检测,DNS查询,批量检测">
+    <meta name="author" content="MX Record Checker">
+</head>
+<body>
+    <div class="container">
+        <header><h1><i class="fas fa-envelope"></i> 邮箱MX记录检测工具</h1>
+            <p>快速检测邮箱后缀的MX记录，支持批量查询，无需后端服务。使用DNS over HTTPS技术，优先选择国内可访问的Cloudflare DNS服务。</p>
+        </header>
+        <div class="card">
+            <h2 class="card-title"><i class="fas fa-tasks"></i> 域名输入</h2>
+            <div class="input-group">
+                <textarea 
+                    id="domainInput" 
+                    placeholder="请输入邮箱后缀（例如：lz-s.cn），多个域名用逗号、分号或换行分隔"
+                    title="支持多种分隔符：逗号、分号、空格、换行"
+                ></textarea>
+                
+                <div class="examples">
+                    <h4>示例域名（点击快速填充）：</h4>
+                    <div class="example-list">
+                        <div class="example-item" data-domain="lz-s.cn">lz-s.cn</div>
+                        <div class="example-item" data-domain="gmail.com">gmail.com</div>
+                        <div class="example-item" data-domain="qq.com">qq.com</div>
+                        <div class="example-item" data-domain="163.com">163.com</div>
+                        <div class="example-item" data-domain="outlook.com">outlook.com</div>
+                        <div class="example-item" data-domain="hotmail.com">hotmail.com</div>
+                        <div class="example-item" data-domain="yahoo.com">yahoo.com</div>
+                    </div>
+                </div>
+                
+                <div class="btn-group">
+                    <button id="checkBtn" class="btn btn-primary" title="开始检测MX记录 (Ctrl+Enter)">
+                        <i class="fas fa-search"></i> 检测MX记录
+                    </button>
+                    <button id="exportBtn" class="btn btn-secondary" disabled title="导出检测结果为JSON文件">
+                        <i class="fas fa-download"></i> 导出结果 (JSON)
+                    </button>
+                    <button id="clearBtn" class="btn btn-secondary" title="清除所有输入和结果">
+                        <i class="fas fa-trash-alt"></i> 清除结果
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <h2 class="card-title"><i class="fas fa-network-wired"></i> DNS服务状态</h2>
+            <div class="status-bar">
+                <div class="status-label">当前状态:</div>
+                <div class="status-content" id="statusText">
+                    <i class="fas fa-circle-notch fa-spin"></i> 等待检测...
+                </div>
+            </div>
+            
+            <div class="dns-providers">
+                <div class="provider-card" id="provider-cloudflare">
+                    <div class="provider-status"></div>
+                    <div class="provider-name">Cloudflare DNS</div>
+                </div>
+                <div class="provider-card" id="provider-google">
+                    <div class="provider-status"></div>
+                    <div class="provider-name">Google DNS</div>
+                </div>
+                <div class="provider-card" id="provider-quad9">
+                    <div class="provider-status"></div>
+                    <div class="provider-name">Quad9 DNS</div>
+                </div>
+            </div>
+            
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text" id="progressText">就绪</div>
+            </div>
+        </div>
+        <div class="card">
+            <h2 class="card-title"><i class="fas fa-list-alt"></i> 检测结果</h2>
+            <div class="results-container">
+                <table id="resultsTable">
+                    <thead>
+                        <tr>
+                            <th width="25%">邮箱后缀</th>
+                            <th width="45%">MX记录</th>
+                            <th width="15%">状态</th>
+                            <th width="15%">DNS服务商</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultsBody">
+                        <tr>
+                            <td colspan="4" style="text-align: center; color: var(--gray);">
+                                输入域名并点击"检测MX记录"开始查询
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <footer>
+            <p>&copy; 2025 邮箱MX记录检测工具 | Lz's Studio</p>
+            <p>提示：检测结果仅供参考，实际邮箱服务配置可能有所不同</p>
+            <p>快捷键：Ctrl+Enter 开始检测</p>
+			<p>请保留Lz's Studio 的名字 或贴出Github地址。</p>
+        </footer>
+    </div>
+    <script src="config/dns-providers.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/dns-checker.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

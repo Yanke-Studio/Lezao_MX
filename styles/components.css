@@ -1,0 +1,260 @@
+/* 组件样式文件 */
+
+/* 按钮样式 */
+.btn-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--secondary);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: var(--light);
+    color: var(--dark);
+    border: 1px solid #e0e0e0;
+}
+
+.btn-secondary:hover {
+    background: #e9ecef;
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* 状态栏样式 */
+.status-bar {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: #f0f7ff;
+    border-radius: 8px;
+    margin-top: 20px;
+    border-left: 4px solid var(--primary);
+}
+
+.status-label {
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.status-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--gray);
+}
+
+/* DNS指示器样式 */
+.dns-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    background: #e9ecef;
+    font-size: 0.9rem;
+}
+
+.dns-active {
+    background: #d1e7dd;
+    color: #0a3622;
+}
+
+/* DNS服务商卡片 */
+.dns-providers {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.provider-card {
+    flex: 1;
+    min-width: 200px;
+    padding: 15px;
+    border-radius: 8px;
+    background: #f8f9fa;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+.provider-active {
+    border-color: var(--primary);
+    background: #edf2ff;
+}
+
+.provider-status {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #6c757d;
+    transition: background-color 0.3s ease;
+}
+
+.provider-active .provider-status {
+    background: #28a745;
+}
+
+.provider-name {
+    font-weight: 600;
+    color: var(--dark);
+}
+
+/* 进度条样式 */
+.progress-container {
+    margin: 30px 0;
+}
+
+.progress-bar {
+    height: 10px;
+    background: #e9ecef;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--primary);
+    border-radius: 5px;
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
+.progress-text {
+    text-align: center;
+    margin-top: 10px;
+    color: var(--gray);
+}
+
+/* 表格样式 */
+.results-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th {
+    background: #f8f9fa;
+    padding: 15px;
+    text-align: left;
+    color: var(--dark);
+    font-weight: 600;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    vertical-align: top;
+}
+
+tr:hover td {
+    background: #f8f9ff;
+}
+
+.domain-cell {
+    font-weight: 600;
+    color: var(--dark);
+}
+
+/* MX记录样式 */
+.mx-record {
+    display: inline-block;
+    padding: 5px 10px;
+    background: #e0f7fa;
+    border-radius: 4px;
+    margin: 3px;
+    font-family: monospace;
+    font-size: 0.9rem;
+}
+
+/* 状态徽章样式 */
+.status-badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.status-success {
+    background: #d1e7dd;
+    color: #0a3622;
+}
+
+.status-warning {
+    background: #fff3cd;
+    color: #664d03;
+}
+
+.status-error {
+    background: #f8d7da;
+    color: #842029;
+}
+
+/* 示例样式 */
+.examples {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    font-size: 0.95rem;
+}
+
+.examples h4 {
+    margin-bottom: 10px;
+    color: var(--dark);
+}
+
+.example-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.example-item {
+    padding: 5px 12px;
+    background: #e9ecef;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.example-item:hover {
+    background: #dee2e6;
+    transform: translateY(-1px);
+}
